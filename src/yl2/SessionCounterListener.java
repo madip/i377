@@ -4,21 +4,22 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 
-public class SessionCounterListener implements HttpSessionListener
-{
-	private static int sessionCount = 0;
-	
-	@Override
+public class SessionCounterListener implements HttpSessionListener {
+	private static int totalActiveSessions = 0;
+
+
 	public void sessionCreated(HttpSessionEvent event) {
-		sessionCount++;
-	}
-	@Override
-	public void sessionDestroyed(HttpSessionEvent event) {
-		sessionCount--;
-	}	
-	public static int getSessions() {
-		return sessionCount;
+		totalActiveSessions++;
 	}
 
+
+public void sessionDestroyed(HttpSessionEvent event) {
+		totalActiveSessions--;
+	}
+
+	public static int getTotalActiveSession() {
+		return totalActiveSessions;
+	}
 }
+
 

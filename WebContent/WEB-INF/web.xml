@@ -59,4 +59,7 @@
     <servlet-name>SessionCounterListener</servlet-name>
     <url-pattern>/SessionCounterListener</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>SessionCounterListener</listener-class>
+  </listener>
 </web-app>
