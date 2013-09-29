@@ -14,7 +14,6 @@
 <property name="ivylib.dir" location="${basedir}/lib" />
 <property name="war.file" value="madip.war" />
 
-
 <path id="compile.classpath">
 	<fileset dir="${ivylib.dir}">
 		<include name="*.jar" />
