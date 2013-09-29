@@ -12,7 +12,6 @@ public class LogOut extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//logout
 		request.getSession().invalidate();
 	}
 
