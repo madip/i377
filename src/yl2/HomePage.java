@@ -25,7 +25,7 @@ public class HomePage extends HttpServlet {
 		Object urlParam = request.getParameter(sessionParameter);
 		sess.setAttribute(sessionParameter, urlParam);
 		
-		response.getWriter().println("Session attribute is "+sessionParameter);
+		response.getWriter().println(" Session attribute is "+sessionParameter);
 		
 	}
 }
