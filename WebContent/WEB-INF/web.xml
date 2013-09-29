@@ -49,7 +49,17 @@
     <servlet-name>SessionCount</servlet-name>
     <url-pattern>/SessionCount</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SessionCounterListener</display-name>
+    <servlet-name>SessionCounterListener</servlet-name>
+    <servlet-class>yl2.SessionCounterListener</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionCounterListener</servlet-name>
+    <url-pattern>/SessionCounterListener</url-pattern>
+  </servlet-mapping>
   <listener>
-    <listener-class>SessionCounterListener</listener-class>
+    <listener-class>yl2.SessionCounterListener</listener-class>
   </listener>
 </web-app>

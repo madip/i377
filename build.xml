@@ -6,13 +6,13 @@
 <property name="webcontent.dir" location="${basedir}/WebContent"/>
 <property name="lib.dir" location="${webcontent.dir}/WEB-INF/lib"/>
 <property name="basedir" location="." />
-<property name="war.file" value="madip.war" />
 <property file="user.properties" location="." />
-<property name="managerUrl" value="http://localhost.8980/manager/text/" />
+<property name="managerUrl" value="http://localhost.8080/manager/text/" />
 <property name="managerUsername" value="tomcat" />
 <property name="managerPassword" value="tomcat" />
 <property name="ivy.retrieve.pattern" location="${lib.dir}/[artifact][type][revision].[ext]" />
 <property name="ivylib.dir" location="${basedir}/lib" />
+<property name="war.file" value="madip.war" />
 
 <path id="compile.classpath">
 	<fileset dir="${ivylib.dir}">
@@ -42,14 +42,14 @@
 	<mkdir dir="${classes.dir}" />
 </target>
 
+<target name="clean">
+	<delete dir="${build.dir}" />
+</target>
+	
 <target name="compile" depends="clean, init, retrieve">
 	<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" includeantruntime="false">
 		<classpath refid="compile.classpath" />
 	</javac>
-</target>
-
-<target name="clean">
-	<delete dir="${build.dir}" />
 </target>
 
 <target name="war" depends="compile">
@@ -64,4 +64,5 @@
 	<ivy:resolve file="${basedir}/ivy.xml" log="downloadonly" />
 	<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
 </target>
+	
 </project>
