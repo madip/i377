@@ -5,22 +5,28 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 
 public class HomePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
+	public static final String sessionParameter = "param";
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String idee = request.getSession().getId();
-		String par = request.getParameter("param"); 
+		HttpSession sess = request.getSession();
+		String sessId = sess.getId();
 		
-		request.getSession().setAttribute("Id", idee);
+		response.getWriter().println("Hello! ");
+		response.getWriter().println("Your session id is "+sessId);
 		
-		response.getWriter().println("Hello! Your session id is " +	idee
-				+ "Session attribute is " + par);
+		Object urlParam = request.getParameter(sessionParameter);
+		sess.setAttribute(sessionParameter, urlParam);
+		
+		response.getWriter().println("Session attribute is "+sessionParameter);
 		
 	}
-
 }
+
