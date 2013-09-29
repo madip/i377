@@ -12,8 +12,7 @@ public class SessionCount extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		response.getWriter().println("Total sessions : " + SessionCounterListener.getTotalActiveSession());
+		response.getWriter().println("Total sessions : " + SessionCounterListener.getAllSessions());
 
 }
 

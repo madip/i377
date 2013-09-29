@@ -1,58 +1,78 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="madip"
-	basedir="." default="compile">
-	<property name="src.dir" location="${basedir}/src" />
-	<property name="build.dir" location="${basedir}/build" />
-	<property name="classes.dir" location="${build.dir}/classes" />
-	<property name="webcontent.dir" location="${basedir}/WebContent" />
-	<property name="lib.dir" location="${webcontent.dir}/WEB-INF/lib" />
-	<property name="basedir" location="." />
-	<property file="user.properties" location="." />
-	<property name="managerUrl" value="http://localhost.8080/manager/text/" />
-	<property name="managerUsername" value="tomcat" />
-	<property name="managerPassword" value="tomcat" />
-	<property name="ivy.retrieve.pattern" location="${lib.dir}/[artifact][type][revision].[ext]" />
-	<property name="ivylib.dir" location="${basedir}/lib" />
-	<property name="war.file" value="madip.war" />
-	<path id="compile.classpath">
-		<fileset dir="${ivylib.dir}">
-			<include name="*.jar" />
-		</fileset>
-		<fileset dir="${lib.dir}">
-			<include name="*.jar" />
-		</fileset>
-	</path>
-	<path id="classpath.tomcat">
-		<fileset dir="${tomcat.dir}/lib">
-			<include name="*.jar" />
-		</fileset>
-	</path>
-	<path id="classpath.retrieve">
-		<fileset dir="${ivylib.dir}">
-			<include name="*.jar" />
-		</fileset>
-		<fileset dir="${lib.dir}">
-			<include name="*.jar" />
-		</fileset>
-	</path>
-	<target name="init">
-		<mkdir dir="${classes.dir}" />
-	</target>
-	<target name="clean">
-		<delete dir="${build.dir}" />
-	</target>
-	<target name="compile" depends="clean, init, retrieve">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6"
-			target="1.6" includeantruntime="false">
-			<classpath refid="compile.classpath" />
-		</javac>
-	</target>
-	
-	<target name="retrieve" description="retreive dependencies">
-		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant"
-			classpathref="classpath.retrieve" />
-		<ivy:resolve file="${basedir}/ivy.xml" log="downloadonly" />
-		<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
-	</target>
-	
-	
+<?xml version="1.0" ?>
+<project name="madip" basedir="." default="war" xmlns:ivy="antlib:org.apache.ivy.ant">
+<property name="src.dir" location="${basedir}/src"/>
+<property name="build.dir" location="${basedir}/build"/>
+<property name="classes.dir" location="${build.dir}/classes"/>
+<property name="webcontent.dir" location="${basedir}/WebContent"/>
+<property name="lib.dir" location="${webcontent.dir}/WEB-INF/lib"/>
+<property name="basedir" location="." />
+<property file="user.properties" location="." />
+<property name="managerUrl" value="http://localhost.8080/manager/text/" />
+<property name="managerUsername" value="tomcat" />
+<property name="managerPassword" value="tomcat" />
+<property name="ivy.retrieve.pattern" location="${lib.dir}/[artifact][type][revision].[ext]" />
+<property name="ivylib.dir" location="${basedir}/lib" />
+<property name="war.file" value="madip.war" />
+
+
+<path id="compile.classpath">
+	<fileset dir="${ivylib.dir}">
+		<include name="*.jar" />
+	</fileset>
+	<fileset dir="${lib.dir}">
+		<include name="*.jar" />
+	</fileset>
+</path>
+
+
+<path id="classpath.tomcat">
+	<fileset dir="${tomcat.dir}/lib">
+		<include name="*.jar" />
+	</fileset>
+</path>
+
+
+<path id="classpath.retrieve">
+	<fileset dir="${ivylib.dir}">
+		<include name="*.jar" />
+	</fileset>
+	<fileset dir="${lib.dir}" >
+		<include name="*.jar" />
+	</fileset>
+</path>
+
+
+<target name="init">
+	<mkdir dir="${classes.dir}" />
+</target>
+
+
+<target name="clean">
+	<delete dir="${build.dir}" />
+</target>
+
+
+<target name="compile" depends="clean, init, retrieve">
+	<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.6" target="1.6" includeantruntime="false">
+		<classpath refid="compile.classpath" />
+	</javac>
+</target>
+
+
+<target name="war" depends="compile">
+	<war destfile="${war.file}" webxml="${webcontent.dir}/WEB-INF/web.xml">
+		<classes dir="${classes.dir}"/>
+		<fileset dir="${webcontent.dir}" excludes="**/servlet-apijar2.5.jar"/>
+	</war>
+</target>
+
+
+<target name="retrieve" description="retreive dependencies">
+	<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="classpath.retrieve" />
+	<ivy:resolve file="${basedir}/ivy.xml" log="downloadonly" />
+	<ivy:retrieve pattern="${ivy.retrieve.pattern}" conf="default" />
+</target>
+
+
 </project>
+
