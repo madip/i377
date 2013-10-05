@@ -17,12 +17,14 @@ public class HomePage extends HttpServlet {
 		String id = sess.getId();
 
 		Object attr = request.getParameter("param");
-		sess.setAttribute("param", attr);
+		if(id != null){
+			sess.setAttribute("param", attr);
+		}
+		
 		String sessAttr = (String) sess.getAttribute("param");
 
 		response.getWriter().println("Hello");
 		response.getWriter().println("Session ID: " + id);
 		response.getWriter().println("Session attribute is " + sessAttr);
 	}
-
 }
