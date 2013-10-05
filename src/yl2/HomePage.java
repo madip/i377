@@ -13,18 +13,15 @@ public class HomePage extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().println("Hello!");		
 		HttpSession sess = request.getSession();
-		String id = sess.getId();
-
-		Object attr = request.getParameter("param");
-		if(id != null){
-			sess.setAttribute("param", attr);
+		String name = request.getParameter("param");
+		if(name != null){
+			sess.setAttribute("param", name);
 		}
 		
-		String sessAttr = (String) sess.getAttribute("param");
+		response.getWriter().println("Your session id is " + sess.getId());
+		response.getWriter().println("Session attribute is " + sess.getAttribute("param"));
 
-		response.getWriter().println("Hello");
-		response.getWriter().println("Session ID: " + id);
-		response.getWriter().println("Session attribute is " + sessAttr);
 	}
 }
