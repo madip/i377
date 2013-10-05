@@ -11,24 +11,19 @@ import javax.servlet.http.HttpSessionListener;
 
 public class SessionCounterListener implements HttpSessionListener
 {
-	private static int totalActiveSessions = 0;
-
+	private static int sessionCount;
 	@Override
-	public void sessionCreated(HttpSessionEvent arg0) {
-		totalActiveSessions++;
-	}
-
-	@Override
-	public void sessionDestroyed(HttpSessionEvent arg0) {
-		if (totalActiveSessions > 0){
-			totalActiveSessions--;	
-		}
+	public void sessionCreated(HttpSessionEvent event) {
+		sessionCount++;
 	}
 	
+	@Override
+	public void sessionDestroyed(HttpSessionEvent event) {
+		sessionCount--;
+	}
+
 	public static int getActiveSessions() {
-		return totalActiveSessions;
-	}	
-
-
+		return sessionCount;
+	}
 }
 
