@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import db.SetupDao;
 
-public class InsertSamples extends HttpServlet {
+public class SampleData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
