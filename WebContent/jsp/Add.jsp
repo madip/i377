@@ -10,8 +10,7 @@
 			<td><input id="codeBox" name="code" /></td>
 		</tr>
 		<tr>
-			<td align="right" colspan="2">
-				<br />
+			<td align="right" colspan="2"><br />
 				<input id="addButton" type=submit value="Lisa"/>
 			</td>
 		</tr>
