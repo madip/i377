@@ -12,7 +12,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <description></description>
     <display-name>Hello</display-name>
@@ -63,7 +62,9 @@
     <servlet-name>SessionCounterListener</servlet-name>
     <url-pattern>/SessionCounterListener</url-pattern>
   </servlet-mapping>
-
+  <listener>
+    <listener-class>yl2.SessionCounterListener</listener-class>
+  </listener>
   <servlet>
     <description></description>
     <display-name>Add</display-name>
@@ -103,5 +104,15 @@
   <servlet-mapping>
     <servlet-name>Search</servlet-name>
     <url-pattern>/Search</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertSamples</display-name>
+    <servlet-name>InsertSamples</servlet-name>
+    <servlet-class>yl3.InsertSamples</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertSamples</servlet-name>
+    <url-pattern>/InsertSamples</url-pattern>
   </servlet-mapping>
 </web-app>
