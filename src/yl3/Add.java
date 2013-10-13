@@ -12,7 +12,7 @@ public class Add extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	   request.getRequestDispatcher("WEB-INF/jsp/Add.jsp").forward(request, response);
+	   request.getRequestDispatcher("jsp/Add.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

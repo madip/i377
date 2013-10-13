@@ -14,7 +14,7 @@ public class Search extends HttpServlet {
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       setSearchResults(request);
-      request.getRequestDispatcher("WEB-INF/jsp/Search.jsp").forward(request, response);
+      request.getRequestDispatcher("jsp/Search.jsp").forward(request, response);
    }
 
    @Override
