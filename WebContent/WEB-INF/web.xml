@@ -63,9 +63,7 @@
     <servlet-name>SessionCounterListener</servlet-name>
     <url-pattern>/SessionCounterListener</url-pattern>
   </servlet-mapping>
-  <listener>
-    <listener-class>yl2.SessionCounterListener</listener-class>
-  </listener>
+
   <servlet>
     <description></description>
     <display-name>Add</display-name>
