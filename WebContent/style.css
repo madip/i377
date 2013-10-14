@@ -106,3 +106,6 @@ body{
 #filterButton{
 	background-color: #fefacd;
 }
+form{
+	width:230px;
+}
