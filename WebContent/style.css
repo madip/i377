@@ -109,3 +109,6 @@ body{
 form{
 	width:230px;
 }
+tr:hover{
+	background-color:lightgray;
+}
