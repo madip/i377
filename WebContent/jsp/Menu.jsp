@@ -8,11 +8,15 @@
 	href="${pageContext.request.contextPath}/style.css" type="text/css">
 </head>
 <body>
-	<ul id="menu">
-		<li><a id="menu_Search" href="Search">Otsi</a></li>
-		<li><a id="menu_Add" href="Add">Lisa</a></li>
-		<li><a id="menu_ClearData" href="Delete?id=all">Kustuta andmed</a></li>
-		<li><a id="menu_InsertData" href="SampleData">Sisesta näidisandmed</a></li>
-	</ul>
+	<div id="wrapper">
+		<div class="wrapcontent">
+			<ul id="menu">
+				<li><a id="menu_Search" href="Search">Otsi</a></li>
+				<li><a id="menu_Add" href="Add">Lisa</a></li>
+				<li><a id="menu_ClearData" href="Delete?id=all">Kustuta andmed</a></li>
+				<li><a id="menu_InsertData" href="SampleData">Sisesta näidisandmed</a></li>
+			</ul>
+		</div>	
+	</div>
 </body>
 </html>

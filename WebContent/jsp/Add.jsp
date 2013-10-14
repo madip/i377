@@ -1,4 +1,5 @@
 <%@ include file="Menu.jsp"%>
+<div id="add">
 <form action="Add" method="post">
 	<table id="formTable" class="formTable">
 		<tr>
@@ -16,7 +17,7 @@
 		</tr>
 	</table>
 </form>
-
+</div>
 
 
 

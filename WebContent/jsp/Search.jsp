@@ -1,6 +1,7 @@
 <%@ include file="Menu.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <body>
+	<div id="search">
 	<form action="Search" method="post">
 		<input id="searchStringBox" value="" name="searchString" /> <input
 			id="filterButton" type="submit" value="Filtreeri" /> <br /> <br />
@@ -29,4 +30,5 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
 </body>
