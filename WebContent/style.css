@@ -39,6 +39,7 @@ body {
   list-style: none;
   padding: 3px 10px 3px 10px;
   border: 1px solid #999;
+  background-color: #fefacd;
 }
 
 #menu li a {
@@ -71,6 +72,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  background-color: #fefacd;
 }
 
 .listTable th {
