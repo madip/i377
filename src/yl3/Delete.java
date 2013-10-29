@@ -18,16 +18,12 @@ public class Delete extends HttpServlet {
    }
 
    private void deleteItems(HttpServletRequest request) {
-      try {
-         if(request.getParameter("id").equalsIgnoreCase("All")) {
-            new Dao().deleteAll();
-         }
-         else {
-            int id = Integer.parseInt(request.getParameter("id"));
-            new Dao().deleteItem(id);
-         }
-      } catch(SQLException e) {
-         throw new RuntimeException(e);
-      }
+	   Dao unitDao = new Dao();
+		if (request.getParameter("id").equalsIgnoreCase("All")) {
+			unitDao.delete();
+		} else {
+			Long id = Long.parseLong(request.getParameter("id"));
+			unitDao.delete(id);
+		}
    }
 }

@@ -25,18 +25,16 @@ public class Search extends HttpServlet {
 
    private void setSearchResults(HttpServletRequest request) {
 
-      String searchString = request.getParameter("searchString");
-      Dao dao = new Dao();
+	   Dao unitDao = new Dao();
+		
+		System.out.println(unitDao.findAllUnits());
+		
+		String searchString = request.getParameter("searchString");
 
-      try {
-         if(searchString == null || searchString.equals("")) {
-            request.setAttribute("searchResults", dao.findAllItems());
-         }
-         else {
-            request.setAttribute("searchResults", dao.search(searchString));
-         }
-      } catch(SQLException e) {
-         throw new RuntimeException(e);
-      } 
+			if (searchString == null || searchString.equals("")) {
+				request.setAttribute("searchResults", unitDao.findAllUnits());
+			} else {
+				request.setAttribute("searchResults", unitDao.search(searchString));
+			}
    }
 }

@@ -5,7 +5,7 @@ import org.apache.commons.dbutils.DbUtils;
 
 public abstract class AbstractDao {
 
-    public static final String DB_URL = "jdbc:hsqldb:file:${user.home}/data/madip/db;shutdown=true;";
+    public static final String DB_URL = "jdbc:hsqldb:mem:madip;shutdown=true, hsqldb.lock_file=false";
 
     private Connection connection;
     protected PreparedStatement pst;

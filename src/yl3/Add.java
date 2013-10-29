@@ -2,10 +2,13 @@ package yl3;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.Unit;
 import db.Dao;
 
 public class Add extends HttpServlet {
@@ -21,10 +24,18 @@ public class Add extends HttpServlet {
 	}
 
    private void addItem(HttpServletRequest request) {
-      try {
-         new Dao().addItem(request.getParameter("name"), request.getParameter("code"));
-      } catch(SQLException e) {
-         throw new RuntimeException(e);
-      }
+	   Unit u = new Unit();
+		u.setName(request.getParameter("name"));
+		u.setCode(request.getParameter("code"));
+		
+		String suc = request.getParameter("superUnitCode");
+		if (!suc.isEmpty())
+		{
+			Unit temp=new Dao().findByCode(suc);
+			System.out.println(temp);
+			u.setSuper_unit_id(temp.getId());
+		}
+		
+		new Dao().save(u);
    }
 }
