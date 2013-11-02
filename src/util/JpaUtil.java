@@ -5,19 +5,19 @@ import javax.persistence.Persistence;
 
 public class JpaUtil {
 
-        private static EntityManagerFactory emf;
+	private static EntityManagerFactory emf;
 
-        static {
-                emf = Persistence.createEntityManagerFactory("unit",
-                                new PropertyLoader().getPropertiesAsMap());
-        }
+	static {
+		emf = Persistence.createEntityManagerFactory("unit",
+				new PropertyLoader().getPropertiesAsMap());
+	}
 
-        public static EntityManagerFactory getFactory() {
-                return emf;
-        }
+	public static EntityManagerFactory getFactory() {
+		return emf;
+	}
 
-        public static void closeFactory() {
-                emf.close();
-        }
+	public static void closeFactory() {
+		emf.close();
+	}
 
 }

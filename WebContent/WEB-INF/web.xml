@@ -14,59 +14,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>Hello</display-name>
-    <servlet-name>Hello</servlet-name>
-    <servlet-class>test.Hello</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Hello</servlet-name>
-    <url-pattern>/Hello</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>HomePage</display-name>
-    <servlet-name>HomePage</servlet-name>
-    <servlet-class>yl2.HomePage</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HomePage</servlet-name>
-    <url-pattern>/HomePage</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>LogOut</display-name>
-    <servlet-name>LogOut</servlet-name>
-    <servlet-class>yl2.LogOut</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LogOut</servlet-name>
-    <url-pattern>/LogOut</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SessionCount</display-name>
-    <servlet-name>SessionCount</servlet-name>
-    <servlet-class>yl2.SessionCount</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SessionCount</servlet-name>
-    <url-pattern>/SessionCount</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>SessionCounterListener</display-name>
-    <servlet-name>SessionCounterListener</servlet-name>
-    <servlet-class>yl2.SessionCounterListener</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SessionCounterListener</servlet-name>
-    <url-pattern>/SessionCounterListener</url-pattern>
-  </servlet-mapping>
-  <listener>
-    <listener-class>yl2.SessionCounterListener</listener-class>
-  </listener>
-  <servlet>
-    <description></description>
     <display-name>Add</display-name>
     <servlet-name>Add</servlet-name>
     <servlet-class>yl3.Add</servlet-class>

@@ -6,32 +6,32 @@ import org.apache.tools.ant.taskdefs.SQLExec;
 
 public class SetupDao extends AbstractDao {
 
-   public void createSchema() {
-      executeSqlFromFile(getClassPathFile("Schema.sql"));
-   }
+	public void createSchema() {
+		executeSqlFromFile(getClassPathFile("Schema.sql"));
+	}
 
-   public void addTestData()  {
-      executeSqlFromFile(getClassPathFile("Testdata.sql"));
+	public void addTestData() {
+		executeSqlFromFile(getClassPathFile("Testdata.sql"));
 
-   }
+	}
 
-   private String getClassPathFile(String fileName) {
-      return getClass().getClassLoader().getResource(fileName).getFile();
-   }
+	private String getClassPathFile(String fileName) {
+		return getClass().getClassLoader().getResource(fileName).getFile();
+	}
 
-   private void executeSqlFromFile(String sqlFilePath) {
-      Project project = new Project();
-      project.init();
+	private void executeSqlFromFile(String sqlFilePath) {
+		Project project = new Project();
+		project.init();
 
-      SQLExec e = new SQLExec();
-      e.setProject(project);
-      e.setTaskType("sql");
-      e.setTaskName("sql");
-      e.setSrc(new File(sqlFilePath));
-      e.setDriver("org.hsqldb.jdbcDriver");
-      e.setUserid("sa");
-      e.setPassword("");
-      e.setUrl(DB_URL);
-      e.execute();
-   }
+		SQLExec e = new SQLExec();
+		e.setProject(project);
+		e.setTaskType("sql");
+		e.setTaskName("sql");
+		e.setSrc(new File(sqlFilePath));
+		e.setDriver("org.hsqldb.jdbcDriver");
+		e.setUserid("sa");
+		e.setPassword("");
+		e.setUrl(DB_URL);
+		e.execute();
+	}
 }

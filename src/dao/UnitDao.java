@@ -8,13 +8,8 @@ import util.JpaUtil;
 public class UnitDao {
 
 	private static void close(EntityManager em) {
-		try {
-			if (em != null)
-				em.close();
-		} catch (Exception e) {
-			System.out
-					.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		}
+		if (em != null)
+			em.close();
 	}
 
 	public List<Unit> findAllUnits() {
@@ -25,37 +20,9 @@ public class UnitDao {
 			List<Unit> query = em.createQuery("SELECT p FROM Unit p",
 					Unit.class).getResultList();
 			return query;
-		}catch(Exception e){
-
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println("Here is the problem!");
-
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-			System.out.println();
-		} 
-		finally {
+		} finally {
 			close(em);
 		}
-		return null;
 	}
 
 	public Unit findByCode(String code) {
@@ -63,31 +30,16 @@ public class UnitDao {
 		try {
 			em = JpaUtil.getFactory().createEntityManager();
 
-			Unit u = em.createQuery(
+			Unit query = em.createQuery(
 					"select p from Unit p where p.code='" + code + "'",
 					Unit.class).getSingleResult();
-
-			return u;
-
-		} catch (Exception e) {
+			return query;
 		} finally {
 			close(em);
-		}
-		return null;
-	}
-
-	public Unit findById(Long id) {
-		EntityManager em = null;
-		try {
-			em = JpaUtil.getFactory().createEntityManager();
-			return em.find(Unit.class, id);
-		} finally {
-			em.close();
 		}
 	}
 
 	public List<Unit> findChildUnits(Long id) {
-
 		EntityManager em = null;
 		try {
 			em = JpaUtil.getFactory().createEntityManager();
@@ -96,24 +48,19 @@ public class UnitDao {
 					"select p from Unit p where p.super_unit_id = " + id,
 					Unit.class).getResultList();
 			return query;
-
 		} finally {
 			close(em);
 		}
 	}
-
-	public List<Unit> search(String s) {
+	
+	public Unit findById(Long id) {
 		EntityManager em = null;
 		try {
 			em = JpaUtil.getFactory().createEntityManager();
-			List<Unit> uL = em.createQuery(
-					"select p from Unit p where LOWER(p.name) LIKE '%"
-							+ s.toLowerCase() + "%'", Unit.class)
-					.getResultList();
-			return uL;
-		} catch (Exception e) {
+			return em.find(Unit.class, id);
+		} finally {
+			em.close();
 		}
-		return null;
 	}
 
 	public void delete() {
@@ -140,6 +87,20 @@ public class UnitDao {
 			if (unitx != null)
 				em.remove(unitx);
 			em.getTransaction().commit();
+		} finally {
+			em.close();
+		}
+	}
+	
+	public List<Unit> search(String s) {
+		EntityManager em = null;
+		try {
+			em = JpaUtil.getFactory().createEntityManager();
+			List<Unit> query = em.createQuery(
+					"select p from Unit p where LOWER(p.name) LIKE '%"
+							+ s.toLowerCase() + "%'", Unit.class)
+					.getResultList();
+			return query;
 		} finally {
 			em.close();
 		}

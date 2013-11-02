@@ -10,40 +10,36 @@ import org.apache.tools.ant.taskdefs.Property;
 
 public class PropertyLoader {
 
-    public HashMap<String, String> getPropertiesAsMap() {
-        final Property p = getPropertyObject();
+	public HashMap<String, String> getPropertiesAsMap() {
+		final Property prop = getPropertyObject();
+		HashMap<String, String> hashMap = new HashMap<String, String>();
 
-        HashMap<String, String> hashMap = new HashMap<String, String>();
+		Hashtable<String, Object> properties = prop.getProject().getProperties();
+		for (Entry<String, Object> each : properties.entrySet()) {
+			hashMap.put(each.getKey(), (String) each.getValue());
+		}
 
-        Hashtable<String, Object> properties = p.getProject().getProperties();
-        for (Entry<String, Object> each : properties.entrySet()) {
-            hashMap.put(each.getKey(), (String) each.getValue());
-        }
+		return hashMap;
+	}
 
-        return hashMap;
-    }
+	private Property getPropertyObject() {
+		String filePath = getClass().getResource("/application.properties").getFile();
+		final Property prop = AntUtil.getTask(Property.class, "property");
+		prop.setFile(new File(filePath));
+		prop.execute();
+		return prop;
+	}
 
-    private Property getPropertyObject() {
-        String filePath = getClass()
-                .getResource("/application.properties").getFile();
+	public Properties getProperties() {
+		final Property p = getPropertyObject();
 
-        final Property p = AntUtil.getTask(Property.class, "property");
-        p.setFile(new File(filePath));
-        p.execute();
-        return p;
-    }
+		return new Properties() {
+			private static final long serialVersionUID = 1L;
 
-    public Properties getProperties() {
-        final Property p = getPropertyObject();
-
-        return new Properties() {
-            private static final long serialVersionUID = 1L;
-
-            public String getProperty(String key) {
-                return p.getProject().getProperty(key);
-            }
-        };
-    }
-
+			public String getProperty(String key) {
+				return p.getProject().getProperty(key);
+			}
+		};
+	}
 
 }

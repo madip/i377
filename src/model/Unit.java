@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 @Entity
 public class Unit {
-
 	@Id
 	@SequenceGenerator(name = "my_seq", sequenceName = "SEQ1", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
@@ -21,8 +20,8 @@ public class Unit {
 		return Id;
 	}
 
-	public void setId(Long l) {
-		this.Id = l;
+	public void setId(Long ld) {
+		this.Id = ld;
 	}
 
 	public String getName() {

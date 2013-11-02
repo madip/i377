@@ -1,4 +1,6 @@
 <%@ include file="Menu.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <div id="add">
 	<form action="Add" method="post">
 		<table id="formTable" class="formTable">
