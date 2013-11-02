@@ -10,7 +10,6 @@ public class Unit {
 	private Long Id;
 	private String name;
 	private String code;
-
 	private Long super_unit_id;
 
 	public Unit() {

@@ -11,7 +11,7 @@ public class SetupDao extends AbstractDao {
 	}
 
 	public void addTestData() {
-		executeSqlFromFile(getClassPathFile("Testdata.sql"));
+		//executeSqlFromFile(getClassPathFile("Testdata.sql"));
 
 	}
 
