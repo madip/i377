@@ -5,12 +5,12 @@ import javax.persistence.*;
 @Entity
 public class Unit {
 	@Id
-	@SequenceGenerator(name = "my_seq", sequenceName = "SEQ1", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
+	@GeneratedValue
+	
 	private Long Id;
 	private String name;
 	private String code;
-	private Long super_unit_id;
+	private String superUnitId;
 
 	public Unit() {
 	}
@@ -39,18 +39,18 @@ public class Unit {
 		this.code = code;
 	}
 
-	public Long getSuper_unit_id() {
-		return super_unit_id;
-	}
+	public String getSuperUnitId() {
+        return superUnitId;
+}
 
-	public void setSuper_unit_id(Long super_unit_id) {
-		this.super_unit_id = super_unit_id;
+	public void setSuperUnitId(String superUnitId) {
+	        this.superUnitId = superUnitId;
 	}
 
 	@Override
 	public String toString() {
 		return "Unit [Id=" + Id + ", name=" + name + ", code=" + code
-				+ ", super_unit_id=" + super_unit_id + "]";
+				+ ", super_unit_id=" + superUnitId + "]";
 	}
 
 }
